@@ -12,7 +12,8 @@
         <Message Importance="High" Text="Configuration: $(Configuration)" />
         <Message Importance="High" Text="Platform: $(Platform)" />
         <Message Importance="High" Text="PackageVersion: $(PackageVersion)" />
-        <Message Importance="High" Text="GitVersion_InformationalVersion: $(GitVersion_InformationalVersion)" />
+        <Message Importance="High"
+            Text="GitVersion_InformationalVersion: $(GitVersion_InformationalVersion)" />
         <Message Importance="High" Text="GitVersion_AssemblySemVer: $(GitVersion_AssemblySemVer)" />
         <Message Importance="High" Text="GitVersion_BranchName: $(GitVersion_BranchName)" />
         <Message Importance="High" Text="GitVersion_Sha: $(GitVersion_Sha)" />

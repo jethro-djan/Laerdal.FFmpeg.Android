@@ -10,7 +10,8 @@
 
     <!-- ANDROID -->
     <PropertyGroup>
-        <!--suppress MsbuildTargetFrameworkTagInspection -->
+        <!--suppress
+        MsbuildTargetFrameworkTagInspection -->
         <TargetFrameworks>monoandroid10.0</TargetFrameworks>
         <IsBindingProject>true</IsBindingProject>
 
@@ -28,7 +29,8 @@
 
         <PackageId>Laerdal.FFmpeg.Android.$(NugetPackageVariantName)</PackageId>
         <PackageTags>Xamarin;FFmpeg;Android;$(NugetPackageVariantName)</PackageTags>
-        <PackageDescription>Xamarin wrapper around mobile-ffmpeg for Android. External libraries: $(ExternalLibraries). Based on https://github.com/tanersener/mobile-ffmpeg</PackageDescription>
+        <PackageDescription>Xamarin wrapper around mobile-ffmpeg for Android. External libraries:
+            $(ExternalLibraries). Based on https://github.com/tanersener/mobile-ffmpeg</PackageDescription>
         <PackageProjectUrl>https://github.com/Laerdal/Laerdal.FFmpeg.Android</PackageProjectUrl>
         <PackageVersion>1.0.0</PackageVersion>
         <PackageOutputPath>../$(RootNamespace).Output/$(NugetPackageVariantName)</PackageOutputPath>
@@ -38,14 +40,16 @@
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <!-- sourcelink: Include PDB in the built .nupkg -->
-        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>
+            $(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <AssemblyName>Laerdal.FFmpeg.Android</AssemblyName>
 
         <Title>Laerdal.FFmpeg.Android.$(NugetPackageVariantName)</Title>
         <Summary>Xamarin FFmpeg Android $(NugetPackageVariantName)</Summary>
-        <Description>Xamarin wrapper around mobile-ffmpeg for Android. External libraries: $(ExternalLibraries). Based on https://github.com/tanersener/mobile-ffmpeg</Description>
+        <Description>Xamarin wrapper around mobile-ffmpeg for Android. External libraries:
+            $(ExternalLibraries). Based on https://github.com/tanersener/mobile-ffmpeg</Description>
         <Authors>François Raminosona, Laerdal</Authors>
         <Owners>François Raminosona, Laerdal</Owners>
         <Copyright>François Raminosona, Laerdal</Copyright>
@@ -60,26 +64,30 @@
 
         <!-- see : https://cezarypiatek.github.io/post/managing-output-in-sdk-projects/ -->
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <!-- sourcelink: Embed source files that are not tracked by the source control manager to the PDB -->
+        <!-- sourcelink: Embed source files that are not tracked by the source control manager to
+        the PDB -->
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <!-- warning MSB9004: ManifestResourceWithNoCulture item type is deprecated. Emit EmbeddedResource items instead, with metadata WithCulture='false', Type='Resx', and optional LogicalName. -->
+        <!-- warning MSB9004: ManifestResourceWithNoCulture item type is deprecated. Emit
+        EmbeddedResource items instead, with metadata WithCulture='false', Type='Resx', and optional
+        LogicalName. -->
         <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB9004</MSBuildWarningsAsMessages>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
-        <None Include="../icon.png" Pack="true" PackagePath="\"/>
-        <None Include="../LICENSE" Pack="true" PackagePath="\"/>
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <None Include="../icon.png" Pack="true" PackagePath="\" />
+        <None Include="../LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
         <Reference Include="Mono.Android" />
     </ItemGroup>
     <ItemGroup>
-    <!-- https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/#build-actions -->
-        <LibraryProjectZip Include="Jars\mobile-ffmpeg.aar" />
+        <!--
+        https://docs.microsoft.com/en-us/xamarin/android/platform/binding-java-library/#build-actions -->
+        <LibraryProjectZip Include="Jars\ffmpeg-kit.aar" />
         <TransformFile Include="Transforms\*.xml" />
     </ItemGroup>
-    
+
     <!-- Documentation -->
     <PropertyGroup>
         <!-- warning CS1591: Missing XML comment for publicly visible type or member. -->

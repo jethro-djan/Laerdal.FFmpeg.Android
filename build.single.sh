@@ -37,10 +37,10 @@ if [ -z "$package_variant" ]; then
     exit 1
 fi
 
-# find the latest ID here : https://api.github.com/repos/tanersener/mobile-ffmpeg/releases/latest
-github_repo_owner=tanersener
-github_repo=mobile-ffmpeg
-github_release_id=28895129
+# find the latest ID here : https://api.github.com/repos/arthenica/ffmpeg-kit/releases
+github_repo_owner=arthenica
+github_repo=ffmpeg-kit
+github_release_id=118272646
 github_info_file="$github_repo_owner.$github_repo.$github_release_id.info.json"
 
 if [ ! -f "$github_info_file" ]; then
@@ -57,7 +57,9 @@ echo "### INFORMATION ###"
 echo ""
 
 # Set version
-github_tag_name=`cat $github_info_file | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//'`
+# Figure out how to grep 6.0-2.LTS instead of 6.0.LTS
+# github_tag_name=`cat $github_info_file | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' | sed 's/v//'`
+github_tag_name=`echo "6.0-2.LTS"` 
 github_short_version=`echo "$github_tag_name" | sed 's/.LTS//'`
 
 # see https://github.com/tanersener/mobile-ffmpeg for more information
@@ -90,7 +92,7 @@ nuget_csproj_path="$nuget_project_folder/$nuget_project_name.csproj"
 nuget_jars_folder="$nuget_project_folder/Jars"
 
 package_aar_folder="$nuget_project_name.Source"
-package_aar_file_name="mobile-ffmpeg-$package_variant-$github_tag_name.aar"
+package_aar_file_name="ffmpeg-kit-$package_variant-$github_tag_name.aar"
 package_aar_file="$package_aar_folder/$package_aar_file_name"
 
 # Generates variables
@@ -158,10 +160,10 @@ echo ""
 echo "### COPY AAR FILE ###"
 echo ""
 
-echo "Copying $package_aar_file to $nuget_jars_folder/mobile-ffmpeg.aar"
-rm -rf $nuget_jars_folder/mobile-ffmpeg.aar
+echo "Copying $package_aar_file to $nuget_jars_folder/ffmpeg-kit.aar"
+rm -rf $nuget_jars_folder/ffmpeg-kit.aar
 mkdir -p $nuget_jars_folder
-cp $package_aar_file $nuget_jars_folder/mobile-ffmpeg.aar
+cp $package_aar_file $nuget_jars_folder/ffmpeg-kit.aar
 
 echo ""
 echo "### MSBUILD ###"
