@@ -169,18 +169,18 @@ echo ""
 echo "### MSBUILD ###"
 echo ""
 
-msbuild_parameters=""
-if [ ! "$verbose" = "1" ]; then
-    msbuild_parameters="${msbuild_parameters} -nologo -verbosity:quiet"
-fi
-msbuild_parameters="${msbuild_parameters} -t:Rebuild"
-msbuild_parameters="${msbuild_parameters} -restore:True"
-msbuild_parameters="${msbuild_parameters} -p:Configuration=Release"
-msbuild_parameters="${msbuild_parameters} -p:NugetPackageVariantName=$nuget_variant"
-msbuild_parameters="${msbuild_parameters} -p:ExternalLibraries=\"$package_libraries\""
-echo "msbuild_parameters = $msbuild_parameters"
-echo ""
+msbuild_parameters=()
 
-rm -rf $nuget_project_folder/bin
-rm -rf $nuget_project_folder/obj
-msbuild $nuget_csproj_path $msbuild_parameters
+if [ ! "$verbose" = "1" ]; then
+    msbuild_parameters+=("-nologo" "-verbosity:quiet")
+fi
+msbuild_parameters+=("-t:Rebuild")
+msbuild_parameters+=("-restore:True")
+msbuild_parameters+=("-p:Configuration=Release")
+msbuild_parameters+=("-p:NugetPackageVariantName=$nuget_variant")
+msbuild_parameters+=("-p:ExternalLibraries=$package_libraries")
+
+rm -rf "$nuget_project_folder/bin"
+rm -rf "$nuget_project_folder/obj"
+
+dotnet build "$nuget_csproj_path" "${msbuild_parameters[@]}"

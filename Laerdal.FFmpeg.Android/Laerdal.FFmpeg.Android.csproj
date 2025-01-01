@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.23">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <Import Project="GitVersion.targets" />
 
@@ -12,16 +12,19 @@
     <PropertyGroup>
         <!--suppress
         MsbuildTargetFrameworkTagInspection -->
-        <TargetFrameworks>monoandroid10.0</TargetFrameworks>
+        <TargetFrameworks>net9.0-android</TargetFrameworks>
         <IsBindingProject>true</IsBindingProject>
+        <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsTrimmable>true</IsTrimmable>
 
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <FileAlignment>512</FileAlignment>
-        <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
-        <AndroidClassParser>class-parse</AndroidClassParser>
+        <!-- <AppDesignerFolder>Properties</AppDesignerFolder>
+        <FileAlignment>512</FileAlignment> -->
+        <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+        <!-- <AndroidClassParser>class-parse</AndroidClassParser>
         <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
-        <DebugType>pdbonly</DebugType>
-        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems> -->
     </PropertyGroup>
 
     <PropertyGroup>
@@ -38,7 +41,7 @@
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
 
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <!-- <SymbolPackageFormat>snupkg</SymbolPackageFormat> -->
         <!-- sourcelink: Include PDB in the built .nupkg -->
         <AllowedOutputExtensionsInPackageBuildOutputFolder>
             $(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
@@ -50,10 +53,10 @@
         <Summary>Xamarin FFmpeg Android $(NugetPackageVariantName)</Summary>
         <Description>Xamarin wrapper around mobile-ffmpeg for Android. External libraries:
             $(ExternalLibraries). Based on https://github.com/tanersener/mobile-ffmpeg</Description>
-        <Authors>François Raminosona, Laerdal</Authors>
-        <Owners>François Raminosona, Laerdal</Owners>
-        <Copyright>François Raminosona, Laerdal</Copyright>
-        <RepositoryUrl>https://github.com/Laerdal/Laerdal.FFmpeg.Android.git</RepositoryUrl>
+        <Authors>François Raminosona, Laerdal, Jethro Djan</Authors>
+        <Owners>François Raminosona, Laerdal, Jethro Djan</Owners>
+        <Copyright>François Raminosona, Laerdal, Jethro Djan</Copyright>
+        <RepositoryUrl>https://github.com/jethro-djan/Laerdal.FFmpeg.Android.git</RepositoryUrl>
         <RepositoryBranch>$(GitVersion_BranchName)</RepositoryBranch>
         <RepositoryCommit>$(GitVersion_Sha)</RepositoryCommit>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -70,16 +73,16 @@
         <!-- warning MSB9004: ManifestResourceWithNoCulture item type is deprecated. Emit
         EmbeddedResource items instead, with metadata WithCulture='false', Type='Resx', and optional
         LogicalName. -->
-        <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB9004</MSBuildWarningsAsMessages>
+        <!-- <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB9004</MSBuildWarningsAsMessages> -->
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs" />
+        <!-- <Compile Include="Properties\AssemblyInfo.cs" /> -->
         <None Include="../icon.png" Pack="true" PackagePath="\" />
         <None Include="../LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="Mono.Android" />
+        <!-- <Reference Include="Mono.Android" /> -->
     </ItemGroup>
     <ItemGroup>
         <!--
@@ -91,7 +94,7 @@
     <!-- Documentation -->
     <PropertyGroup>
         <!-- warning CS1591: Missing XML comment for publicly visible type or member. -->
-        <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);CS1591</MSBuildWarningsAsMessages>
+        <!-- <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);CS1591</MSBuildWarningsAsMessages> -->
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <DocumentationFile>$(RootNamespace).doc.xml</DocumentationFile>
         <DocumentationMarkdown>$(RootNamespace).doc.md</DocumentationMarkdown>
